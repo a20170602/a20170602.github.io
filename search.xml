@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search> 
+  
+  
+    
+    <entry>
+      <title>github账号和gitee账号同时配置 ssh_key</title>
+      <link href="/2021/08/08/base_knowledge/github%E8%B4%A6%E5%8F%B7%E5%92%8Cgitee%E8%B4%A6%E5%8F%B7%E5%90%8C%E6%97%B6%E9%85%8D%E7%BD%AE-ssh-key/"/>
+      <url>/2021/08/08/base_knowledge/github%E8%B4%A6%E5%8F%B7%E5%92%8Cgitee%E8%B4%A6%E5%8F%B7%E5%90%8C%E6%97%B6%E9%85%8D%E7%BD%AE-ssh-key/</url>
+      
+        <content type="html"><![CDATA[<h3 id="分别生成gitee和github的ssh-key"><a href="#分别生成gitee和github的ssh-key" class="headerlink" title="分别生成gitee和github的ssh_key"></a>分别生成gitee和github的ssh_key</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh-keygen -t rsa -C &#x27;第一个邮箱账号&#123;&#123;xxxxx@company.com&#125;&#125;&#x27; -f ~/.ssh/id_rsa</span><br><span class="line">$ ssh-keygen -t rsa -C &#x27;第二个邮箱账号&#123;&#123;xxxxx@company.com&#125;&#125;&#x27; -f ~/.ssh/github_id_rsa</span><br></pre></td></tr></table></figure><h3 id="在-ssh-目录下新建一个config文件，添加如下内容（其中Host和HostName填写git服务器的域名，IdentityFile指定私钥的路径）"><a href="#在-ssh-目录下新建一个config文件，添加如下内容（其中Host和HostName填写git服务器的域名，IdentityFile指定私钥的路径）" class="headerlink" title="在~/.ssh 目录下新建一个config文件，添加如下内容（其中Host和HostName填写git服务器的域名，IdentityFile指定私钥的路径）"></a>在~/.ssh 目录下新建一个config文件，添加如下内容（其中Host和HostName填写git服务器的域名，IdentityFile指定私钥的路径）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># github.com</span><br><span class="line">Host github.com</span><br><span class="line">HostName github.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/github_rsa</span><br><span class="line"></span><br><span class="line"># gitee.com</span><br><span class="line">Host gitee.com</span><br><span class="line">HostName gitee.com</span><br><span class="line">PreferredAuthentications publickey</span><br><span class="line">IdentityFile ~/.ssh/id_rsa</span><br></pre></td></tr></table></figure><h4 id="这里补充一下新建文件的命令"><a href="#这里补充一下新建文件的命令" class="headerlink" title="这里补充一下新建文件的命令"></a>这里补充一下新建文件的命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ cd ~/.ssh</span><br><span class="line">$ touch config #更新config文件的访问和修改时间，如果config不存在，则创建之 </span><br><span class="line">$ rm config #删除config文件</span><br><span class="line">$ vim config #进入文件</span><br><span class="line">按键盘 i 键 即变成可编辑状态</span><br><span class="line">编辑好后按下esc</span><br><span class="line">然后shift+“：”，使文件变成可查询状态</span><br><span class="line">最后是wq(保存退出) / q!(不保存退出)</span><br></pre></td></tr></table></figure><h3 id="添加公钥"><a href="#添加公钥" class="headerlink" title="添加公钥"></a>添加公钥</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ cat id_rsa.pub</span><br><span class="line">#将终端打印出来的公钥部署到仓库上</span><br></pre></td></tr></table></figure><h3 id="测试是否成功"><a href="#测试是否成功" class="headerlink" title="测试是否成功"></a>测试是否成功</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ssh -T git@gitee.com</span><br><span class="line">$ ssh -T git@github.com</span><br></pre></td></tr></table></figure><p>测试链接成功，返回<br><img src="https://raw.githubusercontent.com/a20170602/blog_img/main/uPic/Kmv4wQ.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 基础知识 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> ssh_key gitee github </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>hexo Butterfly主题安装和应用</title>
+      <link href="/2021/08/07/%20blog_related/hexo-Butterfly%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85%E5%92%8C%E5%BA%94%E7%94%A8/"/>
+      <url>/2021/08/07/%20blog_related/hexo-Butterfly%E4%B8%BB%E9%A2%98%E5%AE%89%E8%A3%85%E5%92%8C%E5%BA%94%E7%94%A8/</url>
+      
+        <content type="html"><![CDATA[<h3 id="安装以及配置文档"><a href="#安装以及配置文档" class="headerlink" title="安装以及配置文档"></a>安装以及配置文档</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">参考https:<span class="comment">//butterfly.js.org/posts/21cfbf15/</span></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客相关 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo butterfly </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Hexo博客搭建</title>
+      <link href="/2021/08/07/%20blog_related/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
+      <url>/2021/08/07/%20blog_related/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
+      
+        <content type="html"><![CDATA[<h3 id="Hexo博客搭建"><a href="#Hexo博客搭建" class="headerlink" title="Hexo博客搭建"></a>Hexo博客搭建</h3><h4 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure><h4 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init [文件夹名字]</span><br></pre></td></tr></table></figure><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure><h4 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run server ==&gt; hexo server</span><br></pre></td></tr></table></figure><h4 id="发布到github"><a href="#发布到github" class="headerlink" title="发布到github"></a>发布到github</h4><p>需要新建仓库，然后给新建的仓库起个名字，<strong>注意：这个名字必须跟用户名一致</strong>，github才会默认设置成用户的博客</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-deployer-git --save</span><br><span class="line">npm i hexo-renderer-pug --save</span><br><span class="line">npm i hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure><p>生成ssh key</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">测试链接是否成功</span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &#x27;一篇文章&#x27; #生成一篇文章.md</span><br><span class="line">hexo g  #生成文章</span><br><span class="line">hexo s  #本地服务器预览</span><br><span class="line">hexo clean #清理缓存</span><br><span class="line">hexo d #上传服务器</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+  
+  
+</search>
