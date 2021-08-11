@@ -4,6 +4,69 @@
   
     
     <entry>
+      <title>intellij IDEA下载及汉化</title>
+      <link href="/2021/08/11/base_knowledge/IDEA%E4%B8%8B%E8%BD%BD%E5%8F%8A%E6%B1%89%E5%8C%96/"/>
+      <url>/2021/08/11/base_knowledge/IDEA%E4%B8%8B%E8%BD%BD%E5%8F%8A%E6%B1%89%E5%8C%96/</url>
+      
+        <content type="html"><![CDATA[<h3 id="下载网址"><a href="#下载网址" class="headerlink" title="下载网址"></a>下载网址</h3><p><a href="https://www.jetbrains.com/idea/download/#section=mac">https://www.jetbrains.com/idea/download/#section=mac</a></p><h3 id="汉化方式"><a href="#汉化方式" class="headerlink" title="汉化方式"></a>汉化方式</h3><p><strong>Ctrl+ALT+S</strong> 打开 <strong>Settings -&gt; Plugins</strong></p><p>输入<em><strong>chinese</strong></em> 选择中文简体字体包安装好插件后重启</p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>认识微信小程序</title>
+      <link href="/2021/08/10/mini_program/%E8%AE%A4%E8%AF%86%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/"/>
+      <url>/2021/08/10/mini_program/%E8%AE%A4%E8%AF%86%E5%BE%AE%E4%BF%A1%E5%B0%8F%E7%A8%8B%E5%BA%8F/</url>
+      
+        <content type="html"><![CDATA[<h1 id="微信小程序"><a href="#微信小程序" class="headerlink" title="微信小程序"></a>微信小程序</h1><p>微信小程序是一种不需要下载安装便可以在手机上使用的应用。</p><p>官方文档：<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/">https://developers.weixin.qq.com/miniprogram/dev/framework/</a></p><p>开发工具下载：<a href="https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html">https://developers.weixin.qq.com/miniprogram/dev/devtools/download.html</a></p><h2 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h2><p>相比传统应用，有以下特点</p><ol><li>和web相比，首先入口不同。（web使用url标识自身，依托搜索引擎；小程序依托微信，入口是小程序码和微信）</li><li>主要都是基于传统的前端技术，以js语言为主</li><li>与App相比，学习门槛和开发成本都比较低，可以快速上手。</li><li>不需要下载和安装，不用也不需要卸载。</li><li>相比H5，小程序受限微信运营规范，不像H5页面那么灵活。但它也可以做一些h5做不到的事情，比如消息订阅，直接转发消息给好友等。</li></ol><p>以下8点值得关注：</p><ul><li>小程序和公众号可以重名 同一个主体两者可以使用同样的名称</li><li>小程序开发群相关的能力，小程序可以获取微信群的群ID，可以限制某功能只能由微信群的群友使用。</li><li>小程序的”附近小程序”功能</li><li>小程序“星标”功能</li><li>小程序可关联500个公众号</li><li>可以直接打开网页</li><li>小程序的灰度更新和线上版本回退功能</li><li>小程序客服能力配置</li></ul><h2 id="小程序运行机制简介"><a href="#小程序运行机制简介" class="headerlink" title="小程序运行机制简介"></a>小程序运行机制简介</h2><h3 id="前台-后台状态"><a href="#前台-后台状态" class="headerlink" title="前台/后台状态"></a>前台/后台状态</h3><p>小程序启动后，界面被展示给用户，此时小程序处于<strong>前台</strong>状态。</p><p>当用户点击右上角胶囊按钮关闭小程序，或者按了设备 Home 键离开微信时，小程序并没有完全终止运行，而是进入了<strong>后台</strong>状态，小程序还可以运行一小段时间。</p><p>当用户再次进入微信或再次打开小程序，小程序又会从后台进入<strong>前台</strong>。但如果用户很久没有再进入小程序，或者系统资源紧张，小程序可能被<strong>销毁</strong>，即完全终止运行。</p><h3 id="启动机制"><a href="#启动机制" class="headerlink" title="启动机制"></a>启动机制</h3><p>小程序启动会有两种情况：</p><p>冷启动 / 热启动</p><p><img src="https://cdn.jsdelivr.net/gh/a20170602/blog_img/uPic/FUmBYm.png" alt="FUmBYm"></p><h3 id="小程序销毁时机"><a href="#小程序销毁时机" class="headerlink" title="小程序销毁时机"></a>小程序销毁时机</h3><p>通常，只有当小程序进入后台一定时间（一般为5分钟），或者系统资源占用过高，才会被销毁。具体而言包括以下几种情形：</p><ul><li>当小程序进入后台，可以维持一小段时间的运行状态，如果这段时间内都未进入前台，小程序会被销毁。</li><li>当小程序占用系统资源过高，可能会被系统销毁或被微信客户端主动回收。<ul><li>在 iOS 上，当微信客户端在一定时间间隔内连续收到系统内存告警时，会根据一定的策略，主动销毁小程序，并提示用户 「运行内存不足，请重新打开该小程序」。具体策略会持续进行调整优化。</li><li>建议小程序在必要时使用 <a href="https://developers.weixin.qq.com/miniprogram/dev/api/device/memory/wx.onMemoryWarning.html">wx.onMemoryWarning</a> 监听内存告警事件，进行必要的内存清理。</li></ul></li></ul><h3 id="更新机制"><a href="#更新机制" class="headerlink" title="更新机制"></a>更新机制</h3><p><img src="https://raw.githubusercontent.com/a20170602/blog_img/main/uPic/uMotdH.png" alt="uMotdH"></p><p>Q1:小程序什么时候能应用新的版本呢？</p><p>小程序冷启动时，如果发现有新版本会在后台异步下载版本，并且同时用客户端本地的代码包启动。所以，新版本需要下一次冷启动时才能应用。如果需要马上应用新版本，可以使用wx.getUpdateManager处理，见官方文档<a href="https://developers.weixin.qq.com/miniprogram/dev/framework/runtime/update-mechanism.html">https://developers.weixin.qq.com/miniprogram/dev/framework/runtime/update-mechanism.html</a></p><h2 id="双线程架构"><a href="#双线程架构" class="headerlink" title="双线程架构"></a>双线程架构</h2><p>为了安全和管控，小程序使用双线程执行:</p><ul><li><p>View 视图线程</p></li><li><p>App Service 逻辑线程</p><p><img src="https://raw.githubusercontent.com/a20170602/blog_img/main/uPic/xHbtoc.png" alt="xHbtoc"></p></li></ul><p>Q1:视图持续更新是怎么实现的？</p><p>简单来说是通过setData实现的</p><p>Q2:使用setData可能会遇到什么问题？</p><p><img src="https://raw.githubusercontent.com/a20170602/blog_img/main/uPic/xdvcOv.png" alt="xdvcOv"></p><p>Q2:微信为什么要使用wxs？</p><p>在ios上wxs比js快 2 ～ 20倍，直接运行在视图线程</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;view&gt;</span><br><span class="line">&lt;view&gt;</span><br><span class="line">&lt;text&gt;&#123;&#123;tools.bar(cjy)&#125;&#125;&lt;/text&gt;</span><br><span class="line">&lt;/view&gt;</span><br><span class="line">  &lt;wxs module=&quot;tools&quot;&gt;</span><br><span class="line">var foo = &quot;&#x27;hello world&#x27; from comm.wxs&quot;;</span><br><span class="line">var bar = function(d)&#123;</span><br><span class="line">return &#x27;hi&#x27; + d;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">module.exports = &#123;</span><br><span class="line">foo: foo,</span><br><span class="line">bar: bar</span><br><span class="line">&#125;;</span><br><span class="line">  &lt;/wxs&gt;</span><br><span class="line">&lt;/view&gt;</span><br></pre></td></tr></table></figure><p>缺点：</p><ul><li><p>wxs运行环境和其他js代码是隔离的</p></li><li><p>wxs函数不能作为视图模板中的事件回调句柄</p></li><li><p>wxs在ios设备上比js快2-20倍</p></li></ul><h3 id="视图线程"><a href="#视图线程" class="headerlink" title="视图线程"></a>视图线程</h3><p><img src="https://raw.githubusercontent.com/a20170602/blog_img/main/uPic/CFIdPC.png" alt="CFIdPC"></p><p><img src="https://raw.githubusercontent.com/a20170602/blog_img/main/uPic/KDxJqm.png" alt="KDxJqm"></p><h3 id="逻辑线程"><a href="#逻辑线程" class="headerlink" title="逻辑线程"></a>逻辑线程</h3><p><img src="https://res.wx.qq.com/wxdoc/dist/assets/img/page-lifecycle.2e646c86.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 微信小程序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> wx </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>github图床，国内访问加载不了的问题</title>
+      <link href="/2021/08/09/%20blog_related/github%E5%9B%BE%E5%BA%8A%EF%BC%8C%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AE%E5%8A%A0%E8%BD%BD%E4%B8%8D%E4%BA%86%E7%9A%84%E9%97%AE%E9%A2%98/"/>
+      <url>/2021/08/09/%20blog_related/github%E5%9B%BE%E5%BA%8A%EF%BC%8C%E5%9B%BD%E5%86%85%E8%AE%BF%E9%97%AE%E5%8A%A0%E8%BD%BD%E4%B8%8D%E4%BA%86%E7%9A%84%E9%97%AE%E9%A2%98/</url>
+      
+        <content type="html"><![CDATA[<h3 id="jsdliver"><a href="#jsdliver" class="headerlink" title="jsdliver"></a>jsdliver</h3><p>jsDelivr是一个免费、开源的加速CDN公共服务,托管了许多大大小小的项目,可加速访问托管的项目目录或图片资源。<br>官方网址：<a href="https://www.jsdelivr.com/">https://www.jsdelivr.com/</a></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">将原本的图床链接改为</span><br><span class="line">类似:</span><br><span class="line">https://cdn.jsdelivr.net/gh/&#123;github用户名&#125;/&#123;项目名字&#125;/&#123;项目下的图片路径&#125;</span><br><span class="line">https://cdn.jsdelivr.net/gh/a20170602/blog_img/uPic/6a2989f0857104369c1877691381ca3403ec86dd2d502-eHNEkN_fw1200.jpeg</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客相关 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> jsdliver </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>github账号和gitee账号同时配置 ssh_key</title>
       <link href="/2021/08/08/base_knowledge/github%E8%B4%A6%E5%8F%B7%E5%92%8Cgitee%E8%B4%A6%E5%8F%B7%E5%90%8C%E6%97%B6%E9%85%8D%E7%BD%AE-ssh-key/"/>
       <url>/2021/08/08/base_knowledge/github%E8%B4%A6%E5%8F%B7%E5%92%8Cgitee%E8%B4%A6%E5%8F%B7%E5%90%8C%E6%97%B6%E9%85%8D%E7%BD%AE-ssh-key/</url>
@@ -58,9 +121,21 @@
       <link href="/2021/08/07/%20blog_related/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/"/>
       <url>/2021/08/07/%20blog_related/Hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/</url>
       
-        <content type="html"><![CDATA[<h3 id="Hexo博客搭建"><a href="#Hexo博客搭建" class="headerlink" title="Hexo博客搭建"></a>Hexo博客搭建</h3><h4 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure><h4 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init [文件夹名字]</span><br></pre></td></tr></table></figure><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure><h4 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run server ==&gt; hexo server</span><br></pre></td></tr></table></figure><h4 id="发布到github"><a href="#发布到github" class="headerlink" title="发布到github"></a>发布到github</h4><p>需要新建仓库，然后给新建的仓库起个名字，<strong>注意：这个名字必须跟用户名一致</strong>，github才会默认设置成用户的博客</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-deployer-git --save</span><br><span class="line">npm i hexo-renderer-pug --save</span><br><span class="line">npm i hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure><p>生成ssh key</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">测试链接是否成功</span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &#x27;一篇文章&#x27; #生成一篇文章.md</span><br><span class="line">hexo g  #生成文章</span><br><span class="line">hexo s  #本地服务器预览</span><br><span class="line">hexo clean #清理缓存</span><br><span class="line">hexo d #上传服务器</span><br></pre></td></tr></table></figure>]]></content>
+        <content type="html"><![CDATA[<h3 id="Hexo博客搭建"><a href="#Hexo博客搭建" class="headerlink" title="Hexo博客搭建"></a>Hexo博客搭建</h3><p>官方文档链接:<a href="https://hexo.io/zh-cn/">https://hexo.io/zh-cn/</a></p><h4 id="Hexo安装"><a href="#Hexo安装" class="headerlink" title="Hexo安装"></a>Hexo安装</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure><h4 id="初始化博客"><a href="#初始化博客" class="headerlink" title="初始化博客"></a>初始化博客</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo init [文件夹名字]</span><br></pre></td></tr></table></figure><h4 id="安装依赖"><a href="#安装依赖" class="headerlink" title="安装依赖"></a>安装依赖</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure><h4 id="预览"><a href="#预览" class="headerlink" title="预览"></a>预览</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run server ==&gt; hexo server</span><br></pre></td></tr></table></figure><h4 id="发布到github"><a href="#发布到github" class="headerlink" title="发布到github"></a>发布到github</h4><p>需要新建仓库，然后给新建的仓库起个名字，<strong>注意：这个名字必须跟用户名一致</strong>，github才会默认设置成用户的博客</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm i hexo-deployer-git --save #这个插件提供提交远程仓库的功能的插件</span><br><span class="line"></span><br><span class="line">====以下为使用hexo-butterfly主题需要安装的两个插件====</span><br><span class="line">npm i hexo-renderer-pug --save</span><br><span class="line">npm i hexo-renderer-stylus --save</span><br></pre></td></tr></table></figure><h4 id="生成ssh-key-并且-将公钥保存到仓库中"><a href="#生成ssh-key-并且-将公钥保存到仓库中" class="headerlink" title="生成ssh key 并且 将公钥保存到仓库中"></a>生成ssh key 并且 将公钥保存到仓库中</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">测试链接是否成功</span><br><span class="line">ssh -T git@github.com</span><br></pre></td></tr></table></figure><h4 id="config-yml的配置修改"><a href="#config-yml的配置修改" class="headerlink" title="_config.yml的配置修改"></a>_config.yml的配置修改</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># URL</span><br><span class="line">## Set your site url here. For example, if you use GitHub Page, set url as &#x27;https://username.github.io/project&#x27;</span><br><span class="line"># GitHub Page 或者 Gitee Page的地址</span><br><span class="line">url: https://a20170602.github.io #修改此处 https://你的github用户名.github.io</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line">pretty_urls:</span><br><span class="line">  trailing_index: true # Set to false to remove trailing &#x27;index.html&#x27; from permalinks</span><br><span class="line">  trailing_html: true # Set to false to remove trailing &#x27;.html&#x27; from permalinks</span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/one-command-deployment</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:a20170602/a20170602.github.io.git #仓库链接</span><br><span class="line">  branch: main #仓库分支，注意现在github默认主分支已经不是master了</span><br></pre></td></tr></table></figure><h4 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo new &#x27;一篇文章&#x27; #生成一篇文章.md</span><br><span class="line">hexo g  #生成文章</span><br><span class="line">hexo s  #本地服务器预览</span><br><span class="line">hexo clean #清理缓存</span><br><span class="line">hexo d #上传服务器</span><br></pre></td></tr></table></figure>]]></content>
       
       
+      <categories>
+          
+          <category> 博客相关 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
       
     </entry>
     
